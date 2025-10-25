@@ -1,0 +1,261 @@
+/* ======================================================= */
+/* 1. โครงสร้างหน้าตะกร้า */
+/* ======================================================= */
+
+.cart-page-container {
+    width: 100%;
+    max-width: 1400px; 
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 60vh; /* ให้เนื้อหามีความสูงเล็กน้อย */
+}
+
+.cart-page-container h1 {
+    font-size: 2rem;
+    color: #2E7D32;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.cart-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.cart-items-list {
+    flex: 2.5; /* ส่วนรายการสินค้า กว้างกว่า */
+}
+
+.cart-summary {
+    flex: 1; /* ส่วนสรุปยอด แคบกว่า */
+    background-color: #FAF8F5; /* สีเดียวกับพื้นหลังสินค้า */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    height: fit-content; /* ให้ความสูงพอดีเนื้อหา */
+    position: sticky;
+    top: 100px; /* ให้มันเลื่อนตามจอ (ห่างจาก Navbar 100px) */
+}
+
+/* ======================================================= */
+/* 2. สไตล์ของสินค้าแต่ละชิ้นในตะกร้า (.cart-item) */
+/* ======================================================= */
+
+.cart-item {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    gap: 20px;
+    align-items: center;
+}
+
+.cart-item-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-details h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.cart-item-details .item-price {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ใช้สไตล์เดิมจาก sy.css แต่ปรับขนาดเล็กน้อย */
+.cart-item .item-qty {
+    width: 55px;
+    padding: 8px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #e74c3c; /* สีแดงสำหรับลบ */
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.remove-item-btn:hover {
+    color: #c0392b;
+    transform: scale(1.1);
+}
+
+.cart-item-total-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2E7D32;
+    min-width: 80px; /* จัดให้ตรงกัน */
+    text-align: right;
+}
+
+/* ======================================================= */
+/* 3. สไตล์ของสรุปยอด (.cart-summary) */
+/* ======================================================= */
+
+.cart-summary h2 {
+    font-size: 1.3rem;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.summary-divider {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 20px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2E7D32; /* สีเขียวหลัก */
+    margin-bottom: 25px;
+}
+
+.checkout-btn {
+    /* ใช้สไตล์เดียวกับปุ่ม add-to-cart-btn */
+    width: 100%;
+    background: linear-gradient(45deg, #2E7D32, #6AA84F);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.checkout-btn:hover {
+    background: linear-gradient(45deg, #1B5E20, #4CAF50);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================================================= */
+/* 4. สไตล์เมื่อตะกร้าว่าง */
+/* ======================================================= */
+
+.empty-cart-message {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+.empty-cart-message i {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.empty-cart-message p {
+    font-size: 1.5rem;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.back-to-shop-btn {
+    /* สไตล์ปุ่มเขียว */
+    background: linear-gradient(45deg, #2E7D32, #6AA84F);
+    color: #fff;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-to-shop-btn:hover {
+    background: linear-gradient(45deg, #1B5E20, #4CAF50);
+    transform: translateY(-3px);
+}
+
+/* ======================================================= */
+/* 5. RESPONSIVE (สำหรับมือถือ) */
+/* ======================================================= */
+
+@media (max-width: 992px) {
+    .cart-layout {
+        flex-direction: column; /* เปลี่ยนเป็นแนวตั้ง */
+    }
+    
+    .cart-summary {
+        position: static; /* ไม่ต้อง sticky แล้ว */
+        top: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .cart-page-container {
+        padding: 20px 10px;
+    }
+
+    .cart-page-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-image {
+        align-self: center;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .cart-item-total-price {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+}
+

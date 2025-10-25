@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สวนไม้สมบูรณ์</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="sy.css">
+</head>
+<body>
+  
+  <nav class="navbar">
+    <div class="logo">สวนไม้สมบูรณ์</div>
+    <ul class="nav-links">
+      <li><a href="#">หน้าแรก</a></li>
+      
+      <li><a href="weed.html">โปรโมชั่น</a></li>
+      <li><a href="#">วิธีดูแลต้นไม้</a></li>
+      <li><a href="#">เกี่ยวกับเรา</a></li>
+      <li><a href="#">ติดต่อ</a></li>
+      <li class="cart"><a href="cart.html">ตะกร้า 🛒</a></li> 
+      <!-- <li class="login"><a href="#" id="login-button">Login</a></li>  -->
+    </ul>
+  </nav>
+
+  <header class="search-header">
+    <div class="search-autocomplete-wrapper">
+      <div class="search-container">
+        <input type="text" placeholder="คุณกำลังมองหาอะไรอยู่?" class="search-input">
+        <button type="submit" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <div id="autocomplete-results"></div>
+    </div>
+  </header>
+
+  <div class="banner-wrapper">
+    <div class="slider-container">
+      <div class="slider-item active" style="background-color: #3498db;">
+        <div class="slide-content">
+          <h1>ยินดีต้อนรับสู่แบนเนอร์ใหม่!</h1>
+          <p>สไลด์ที่ 1: การออกแบบขนาด 1392x315 พิกเซล</p>
+        </div>
+      </div>
+      <div class="slider-item" style="background-color: #2ecc71;">
+        <div class="slide-content">
+          <h1>โปรโมชั่นสุดพิเศษ!</h1>
+          <p>สไลด์ที่ 2: อย่าพลาดข้อเสนอดี ๆ ของเรา</p>
+        </div>
+      </div>
+      <div class="slider-item" style="background-color: #e74c3c;">
+        <div class="slide-content">
+          <h1>ลงทะเบียน eKYC วันนี้</h1>
+          <p>สไลด์ที่ 3: เพิ่มความมั่นใจและปิดการขายได้เร็วขึ้น</p>
+        </div>
+      </div>
+      <button class="nav-button prev-button" aria-label="Previous Slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="nav-button next-button" aria-label="Next Slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="slider-dots">
+        <span class="dot active" data-slide-index="0"></span>
+        <span class="dot" data-slide-index="1"></span>
+        <span class="dot" data-slide-index="2"></span>
+      </div>
+    </div>
+  </div>
+
+  <section class="product-section">
+  
+    <div class="product-container">
+      
+      <div class="product-card">
+        <img src="https://png.pngtree.com/png-clipart/20211205/original/pngtree-aglaonema-plant-png-image_6959997.png" alt="ต้นอโกลนีมา">
+        <h3>อโกลนีมาแดง</h3>
+        <p>ต้นไม้ฟอกอากาศ ขนาดกลาง เหมาะกับบ้านและออฟฟิศ</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-aglaonema">จำนวน:</label>
+            <input type="number" id="qty-aglaonema" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 350</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="aglaonema">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="มอนสเตอร่า">
+        <h3>มอนสเตอร่า</h3>
+        <p>ใบใหญ่ สวยงาม ให้ความรู้สึกธรรมชาติในห้อง</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-monstera">จำนวน:</label>
+            <input type="number" id="qty-monstera" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 990</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="monstera">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/d.jpg" alt="ลิ้นมังกร">
+        <h3>ลิ้นมังกร</h3>
+        <p>ต้นไม้ฟอกอากาศ แข็งแรง ดูแลง่าย</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-snakeplant">จำนวน:</label>
+            <input type="number" id="qty-snakeplant" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 180</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="snakeplant">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="เดหลี">
+        <h3>เดหลี</h3>
+        <p>ดอกขาวสวย ฟอกอากาศได้ดี</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-peace-lily">จำนวน:</label>
+            <input type="number" id="qty-peace-lily" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 250</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="peace-lily">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="ฟิกกีตา">
+        <h3>ฟิกกีตา</h3>
+        <p>ใบใหญ่รูปหัวใจ เหมาะตั้งในห้องนั่งเล่น</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-figgita">จำนวน:</label>
+            <input type="number" id="qty-figgita" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 750</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="figgita">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="โพธอส">
+        <h3>โพธอส</h3>
+        <p>ไม้เลื้อย ดูแลง่าย เหมาะแขวนในบ้าน</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-pothos">จำนวน:</label>
+            <input type="number" id="qty-pothos" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 150</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="pothos">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="ZZ Plant">
+        <h3>ZZ Plant</h3>
+        <p>ทนแดดน้อย ดูแลง่าย เหมาะกับออฟฟิศ</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-zzplant">จำนวน:</label>
+            <input type="number" id="qty-zzplant" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 420</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="zzplant">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="คาลาเทีย">
+        <h3>คาลาเทีย</h3>
+        <p>ใบลายสวยงาม ต้องดูแลความชื้นดี</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-calathea">จำนวน:</label>
+            <input type="number" id="qty-calathea" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 550</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="calathea">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="ลิ้นมังกรเล็ก">
+        <h3>ลิ้นมังกรเล็ก</h3>
+        <p>เหมาะตั้งบนโต๊ะ ทำความสะอาดง่าย</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-snake-mini">จำนวน:</label>
+            <input type="number" id="qty-snake-mini" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 120</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="snake-mini">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="กระบองเพชร">
+        <h3>กระบองเพชร</h3>
+        <p>ทนแล้ง ดูแลง่าย ตกแต่งโต๊ะทำงาน</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-cactus">จำนวน:</label>
+            <input type="number" id="qty-cactus" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 80</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="cactus">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="Succulent">
+        <h3>Succulent</h3>
+        <p>ต้นเล็ก ขนาดพอดี เหมาะตกแต่งมุมบ้าน</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-succulent">จำนวน:</label>
+            <input type="number" id="qty-succulent" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 95</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="succulent">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="ไผ่กวนอิม">
+        <h3>ไผ่กวนอิม</h3>
+        <p>ต้นโชคลาภ ตั้งโต๊ะหรือมุมบ้านได้</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-bamboo">จำนวน:</label>
+            <input type="number" id="qty-bamboo" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 200</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="bamboo">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+      
+      <div class="product-card">
+        <img src="img/d.jpg" alt="ฟิโลเดนดรอน">
+        <h3>ฟิโลเดนดรอน</h3>
+        <p>ไม้ประดับใบสวย ทนต่อร่มเงาได้ดี</p>
+        <div class="product-actions">
+          <div class="quantity-control">
+            <label for="qty-philo">จำนวน:</label>
+            <input type="number" id="qty-philo" class="item-qty" value="1" min="1" max="99">
+          </div>
+          <div class="price">฿ 380</div>
+        </div>
+        <button class="add-to-cart-btn" data-product-id="philo">เพิ่มลงตะกร้า <i class="fas fa-cart-plus"></i></button>
+      </div>
+
+    </div>
+  </section>
+  
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      
+      <!-- <div class="modal-header">
+        <i class="fas fa-user-circle" style="font-size: 48px; color: #2E7D32; margin-bottom: 15px;"></i>
+        <p class="modal-title">เริ่มต้นใช้งาน</p>
+      </div>
+      
+      <div class="modal-body">
+        <button class="social-login-btn email-btn">
+          <i class="far fa-envelope"></i> เข้าสู่ระบบด้วยอีเมล
+        </button>
+        <button class="social-login-btn google-btn">
+          <i class="fab fa-google"></i> เชื่อมต่อด้วย Google
+        </button>
+        
+        <div class="separator">
+          <hr>
+          <span>หรือ</span>
+          <hr>
+        </div>
+        
+        <input type="tel" placeholder="เบอร์โทรศัพท์" class="phone-input">
+        
+        <button class="confirm-btn">ยืนยัน</button>
+        
+        <p class="privacy-text">กด "ยืนยัน" คือ ยอมรับเงื่อนไขการใช้บริการ และนโยบายความเป็นส่วนตัวแล้ว</p>
+      </div> -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 สวนไม้สมบูรณ์ | All rights reserved</p>
+  </footer>
+  
+  <script src="index.js"></script> 
+
+</body>
+</html>

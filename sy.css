@@ -1,0 +1,723 @@
+/* ======================================================= */
+/* 1. Global & Base Styles */
+/* ======================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.search-header,
+.banner-wrapper,
+.product-section {
+    width: 100%;
+    max-width: 1400px; 
+    margin: 0 auto;    
+ 
+}
+
+/* ======================================================= */
+/* 2. Navbar Styling */
+/* ======================================================= */
+
+.navbar {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .logo {
+  color: #2E7D32; 
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #2E7D32; 
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #2E7D32; 
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: #1B5E20; 
+}
+
+.navbar .nav-links a:hover::after {
+  width: 100%;
+}
+
+/* === (เพิ่มใหม่) สไตล์สำหรับ Badge นับจำนวนสินค้าในตะกร้า === */
+.navbar .cart {
+    position: relative; /* เพื่อให้ .cart-count-badge สามารถ absolute ได้ */
+}
+
+.cart-count-badge {
+    position: absolute;
+    top: 0px; 
+    right: -10px; /* ปรับตำแหน่งให้อยู่บนมุมขวาของไอคอนรถเข็น */
+    background-color: #e74c3c; /* สีแดงสะดุดตา */
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    z-index: 101;
+}
+
+
+/* ======================================================= */
+/* 3. Search Bar Styling */
+/* ======================================================= */
+
+.search-header {
+    max-width: 100%;
+    box-sizing: border-box; /* <--- แนะนำให้เพิ่ม */
+    
+    background-color: #2e7d3253; 
+    padding: 10px 0; 
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* (อัปเดต) 
+  เพิ่ม .search-autocomplete-wrapper
+  เพื่อเป็น "จุดอ้างอิง" (position: relative) ให้กล่องผลลัพธ์
+*/
+.search-autocomplete-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 800px; /* ขนาดเดียวกับ .search-container */
+}
+
+.search-container {
+    width: 100%; /* ปรับให้เต็ม wrapper */
+    display: flex;
+    border: 1px solid #6AA84F; 
+    border-radius: 50px; 
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative; /* เพิ่ม z-index ให้สูงกว่ากล่องผลลัพธ์เล็กน้อย */
+    z-index: 901; 
+}
+
+/* (อัปเดต) CSS สำหรับกล่อง Autocomplete */
+#autocomplete-results {
+    display: none; /* ซ่อนไว้ก่อน */
+    position: absolute;
+    top: 95%; /* ให้มันซ้อนทับขอบล่างของ search-container เล็กน้อย */
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    /* โค้งมนเฉพาะมุมล่าง */
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 900; /* อยู่หลัง search-container */
+    max-height: 300px;
+    overflow-y: auto;
+    padding-top: 10px; /* เพิ่มช่องว่างด้านบน ให้ขอบไม่ชนกัน */
+}
+
+.autocomplete-item {
+    padding: 10px 25px; /* ใช้ padding เดียวกับ .search-input */
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+}
+
+.autocomplete-item:hover {
+    background-color: #f0f0f0;
+}
+/* สิ้นสุด CSS ของ Autocomplete */
+
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px 25px; 
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-button {
+    background-color: #2E7D32; 
+    padding: 10px 20px; 
+    font-size: 18px;
+    color: white; 
+    transition: background-color 0.3s;
+    border: none; 
+    outline: none; 
+}
+
+/* (โค้ดเดิม) แก้ปัญหาขอบดำตอนคลิก */
+.search-button:focus,
+.search-button:active {
+    outline: none;
+    box-shadow: none; 
+    border: none;
+}
+
+.search-button:hover {
+    background-color: #1B5E20; 
+}
+
+
+/* ======================================================= */
+/* 4. Banner Slider Styling */
+/* ======================================================= */
+.banner-wrapper {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-container {
+    position: relative;
+    width: 1392px; 
+    max-width: 95%;
+    height: 315px; 
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.slider-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slider-item.active {
+    display: flex; 
+    opacity: 1;
+}
+
+.slide-content h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.slide-content p {
+    font-size: 20px;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    z-index: 30; 
+    font-size: 20px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover { background-color: rgba(0, 0, 0, 0.7); }
+.prev-button { left: 15px; }
+.next-button { right: 15px; }
+
+.slider-dots {
+    position: absolute;
+    bottom: 15px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 20; 
+    display: flex;
+    justify-content: center;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 6px;
+    background-color: #bbb; 
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background-color: #2E7D32; 
+    transform: scale(1.2);
+}
+
+
+/* ======================================================= */
+/* 5. Product Section Styling */
+/* ======================================================= */
+
+.product-section {
+  background-color: #ffffff00; 
+  /* padding: 60px 40px;  */
+  text-align: center;
+}
+
+.product-section h2 {
+  font-size: 2rem;
+  color: #2E7D32; 
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.product-container {
+  display: flex;           
+  justify-content: center; 
+  flex-wrap: wrap;         
+  gap: 30px;               
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  overflow: hidden;
+  width: 280px;
+  display: flex;            
+  flex-direction: column;   
+  justify-content: space-between; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 450px;       
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.product-card img {
+  width: 100%;           
+  height: 200px;         
+  object-fit: contain;   
+  object-position: center; 
+  display: block;
+  background-color: #f0f0f0; 
+}
+
+.product-card h3 {
+  color: #2E7D32;
+  font-size: 1.3rem;
+  margin: 15px 0 5px;
+  padding: 0 10px;
+}
+
+/* (ปรับปรุง) Product Card <p> */
+.product-card p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  padding: 0 10px;
+  line-height: 1.5;
+  flex-grow: 0; /* เปลี่ยนจาก 1 เพื่อให้ช่องจำนวนสินค้าอยู่ด้านล่างสุด */
+  min-height: 45px; /* เพิ่มความสูงขั้นต่ำให้ p เพื่อให้การ์ดดูสม่ำเสมอ */
+}
+
+/* === (เพิ่มใหม่) สไตล์สำหรับช่องเลือกจำนวนสินค้าและราคา === */
+.product-actions {
+    display: flex;
+    justify-content: space-around; /* จัดให้ช่องจำนวนและราคาอยู่คนละฝั่ง */
+    align-items: center;
+    width: 100%;
+    padding: 0 10px 10px 10px; /* เพิ่มพื้นที่ด้านล่าง */
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.item-qty {
+    width: 50px; /* ความกว้างช่องใส่จำนวน */
+    margin-left: 8px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* (ปรับปรุง) Product Card .price (ลบ margin ที่ไม่จำเป็นออก) */
+.product-card .price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #FFC107; 
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0 10px;
+}
+
+/* (ปรับปรุง) ปุ่ม "เพิ่มลงตะกร้า" (จากเดิม "ซื้อสินค้า") */
+.add-to-cart-btn {
+  background: linear-gradient(45deg, #2E7D32, #6AA84F); 
+  color: #fff;
+  border: none;
+  border-radius: 25px; 
+  padding: 12px 25px; 
+  margin-bottom: 20px; 
+  cursor: pointer;
+  font-weight: 600; 
+  font-size: 1.05rem; 
+  width: 90%; 
+  align-self: center; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  transition: all 0.3s ease; 
+  letter-spacing: 0.5px; 
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(45deg, #1B5E20, #4CAF50); 
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); 
+}
+
+/* (โค้ดเดิม) สำหรับการซ่อนสินค้าตอนค้นหา */
+.product-card.hidden-by-search {
+    display: none !important; 
+}
+
+
+/* ======================================================= */
+/* 6. MODAL (Login Popup) STYLING */
+/* ======================================================= */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); 
+    backdrop-filter: blur(5px); 
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* (ปรับปรุง) ส่วนหัว (ลบ .car-house-icon CSS ออก) */
+.modal-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* ... (ส่วนที่เหลือของ Modal .social-login-btn ฯลฯ เหมือนเดิม) ... */
+.social-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.social-login-btn i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+.google-btn {
+    border-color: #db4437;
+    color: #333;
+}
+.google-btn:hover {
+    background-color: #f0f0f0;
+}
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #999;
+}
+.separator hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 0 10px;
+}
+.phone-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.phone-input:focus {
+    border-color: #2E7D32;
+}
+.confirm-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2E7D32; /* สีเขียวหลัก */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.confirm-btn:hover {
+    background-color: #1B5E20;
+}
+.privacy-text {
+    font-size: 0.75rem;
+    color: #777;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/* ======================================================= */
+/* 7. Footer Styling */
+/* ======================================================= */
+
+.footer {
+  background-color: #2E7D32; 
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto; 
+}
+
+
+/* ======================================================= */
+/* 8. RESPONSIVE DESIGN */
+/* ======================================================= */
+
+/* ... (ส่วน Responsive เหมือนเดิม ไม่มีการเปลี่ยนแปลง) ... */
+@media (max-width: 992px) {
+    .navbar { padding: 15px 20px; }
+    .navbar .nav-links { gap: 15px; font-size: 0.9rem; }
+    .slider-container { height: 250px; }
+    .slide-content h1 { font-size: 36px; }
+    .slide-content p { font-size: 18px; }
+    .product-section { padding: 40px 20px; }
+    .product-container {
+        gap: 20px;
+    }
+    .product-card { width: 220px; min-height: 420px; }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+    .navbar .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: space-between;
+        margin-top: 5px;
+    }
+    .navbar .nav-links li a {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+    .slider-container { height: 180px; border-radius: 0; max-width: 100%;}
+    .slide-content h1 { font-size: 24px; }
+    .slide-content p { font-size: 14px; }
+    .nav-button { width: 35px; height: 35px; font-size: 16px; }
+    .prev-button { left: 5px; }
+    .next-button { right: 5px; }
+    .product-section { padding: 20px 15px 30px 15px; }
+    .product-section h2 { font-size: 1.8rem; margin-bottom: 25px; }
+    .product-container {
+        gap: 15px;
+        padding: 0;
+    }
+    .product-card { 
+        width: 90%;
+        margin: 0 auto;
+        min-height: auto;
+    }
+    .product-card img { height: 150px; }
+    .modal-content { padding: 20px; max-width: 95%;}
+}
+/* ======================================================= */
+/* 6.5 MODAL (Checkout) STYLING (เพิ่มใหม่) */
+/* ======================================================= */
+
+.checkout-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#shipping-address {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit; /* ให้ใช้ font เดียวกับเว็บ */
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#shipping-address:focus {
+    border-color: #2E7D32;
+}
+
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    padding: 10px 0;
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+}
+
+#modal-total-price {
+    color: #2E7D32;
+    font-size: 1.5rem;
+}
+
+.qr-code-demo {
+    text-align: center;
+    margin: 0;
+}
+
+.qr-code-demo img {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    
+}
+
+.slip-instruction {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: #e74c3c; /* สีแดงเตือน */
+    background-color: #fff8f8;
+    border: 1px solid #e74c3c;
+    border-radius: 8px;
+    padding: 10px;
+}

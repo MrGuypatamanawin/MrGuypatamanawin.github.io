@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตะกร้าสินค้า - สวนไม้สมบูรณ์</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <link rel="stylesheet" href="sy.css">
+  
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+  
+  <nav class="navbar">
+    <div class="logo">สวนไม้สมบูรณ์</div>
+    <ul class="nav-links">
+      <li><a href="weed.html">หน้าแรก</a></li>
+      
+      <li><a href="#">โปรโมชั่น</a></li>
+      <li><a href="#">วิธีดูแลต้นไม้</a></li>
+      <li><a href="#">เกี่ยวกับเรา</a></li>
+      <li><a href="#">ติดต่อ</a></li>
+      <li class="cart"><a href="cart.html">ตะกร้า 🛒</a></li> 
+      <!-- <li class="login"><a href="#" id="login-button">Login</a></li>  -->
+    </ul>
+  </nav>
+
+  <main class="cart-page-container">
+    <h1>ตะกร้าสินค้าของคุณ</h1>
+    
+    <div class="cart-layout">
+      
+      <section class="cart-items-list">
+        </section>
+
+      <aside class="cart-summary">
+        <h2>สรุปยอดสั่งซื้อ</h2>
+        
+        <div class="summary-row">
+          <span>ยอดรวมสินค้า (<span id="cart-item-count">0</span> รายการ)</span>
+          <span id="cart-subtotal">฿0.00</span>
+        </div>
+        
+        <div class="summary-row">
+          <span>ค่าจัดส่ง</span>
+          <span>(คำนวณในขั้นตอนถัดไป)</span>
+        </div>
+        
+        <hr class="summary-divider">
+        
+        <div class="summary-total">
+          <span>ยอดสุทธิ</span>
+          <span id="cart-total">฿0.00</span>
+        </div>
+        
+        <button class="checkout-btn">
+          <i class="fas fa-shield-alt"></i>
+          ไปที่หน้าชำระเงิน
+        </button>
+      </aside>
+    </div>
+
+    <div id="empty-cart-message" class="empty-cart-message" style="display: none;">
+      <i class="fas fa-shopping-basket fa-3x"></i>
+      <p>ตะกร้าของคุณยังว่างเปล่า</p>
+      <a href="weed.html" class="back-to-shop-btn">กลับไปเลือกสินค้า</a>
+    </div>
+
+  </main>
+  
+  <script src="index.js"></script>
+
+  <footer class="footer">
+    <p>© 2025 สวนไม้สมบูรณ์ | All rights reserved</p>
+  </footer>
+
+  <div id="checkout-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    
+    <div class="modal-header">
+      <i class="fas fa-money-check-alt" style="font-size: 48px; color: #2E7D32; margin-bottom: 15px;"></i>
+      <p class="modal-title">ยืนยันการสั่งซื้อและชำระเงิน</p>
+    </div>
+    
+    <div class="checkout-modal-body">
+      
+      <label for="shipping-address" style="font-weight: 600; margin-bottom: 5px;">ที่อยู่สำหรับจัดส่ง:</label>
+      <textarea id="shipping-address" placeholder="กรอกบ้านเลขที่, ถนน, ตำบล, อำเภอ, จังหวัด และ รหัสไปรษณีย์..."></textarea>
+      
+      <div class="checkout-total">
+        <span>ยอดที่ต้องชำระ:</span>
+        <span id="modal-total-price">฿0.00</span>
+      </div>
+      
+      <p style="text-align: center; font-weight: 500; margin-top: 10px;">แสกน QR Code เพื่อชำระเงิน</p>
+      <div class="qr-code-demo">
+        <img src="img/004999116810507_20251026_012358.jpeg" alt="QR Code">
+      </div>
+      
+      <p class="slip-instruction">
+        <i class="fas fa-exclamation-triangle"></i>
+        กรุณากดยืนยัน และ **ส่งสลิปการโอนเงินในหน้าถัดไป**
+      </p>
+      
+      <button id="confirm-payment-btn" class="confirm-btn">
+        ยืนยันและไปต่อ
+      </button>
+      
+    </div>
+  </div>
+</div>
+  
+  </body>
+</html>
