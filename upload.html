@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อัปโหลดสลิป - สวนไม้สมบูรณ์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="sy.css">
+    <link rel="stylesheet" href="orders.css"> 
+    <style>
+        .upload-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-height: 50vh;
+            text-align: center;
+        }
+        .upload-container h1 {
+            color: #2E7D32;
+            margin-bottom: 20px;
+        }
+        #slip-upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+        }
+        #slip-input {
+            padding: 10px;
+            width: 100%;
+        }
+        #upload-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff; /* สีน้ำเงิน */
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #upload-btn:hover {
+            background-color: #0056b3;
+        }
+        #order-id-display {
+            font-weight: 700;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar"></nav>
+    <main class="upload-container">
+        <h1>อัปโหลดหลักฐานการชำระเงิน</h1>
+        <p>สำหรับคำสั่งซื้อ: <span id="order-id-display">...</span></p>
+        
+        <form id="slip-upload-form">
+            <input type="file" id="slip-input" accept="image/jpeg, image/png" required>
+            <button type="submit" id="upload-btn">
+                <i class="fas fa-upload"></i> ยืนยันการอัปโหลด
+            </button>
+        </form>
+
+        <div id="upload-status" style="margin-top: 20px;"></div>
+    </main>
+    <footer class="footer"></footer>
+    <script src="index.js"></script>
+</body>
+</html>

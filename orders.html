@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายการสั่งซื้อของฉัน - สวนไม้สมบูรณ์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="sy.css">
+    <link rel="stylesheet" href="orders.css"> 
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">สวนไม้สมบูรณ์</div>
+        <ul class="nav-links">
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li class="login"><a href="#" id="login-button">Login</a></li>
+          <li><a href="#">โปรโมชั่น</a></li>
+          <li><a href="#">วิธีดูแลต้นไม้</a></li>
+          <li><a href="#">เกี่ยวกับเรา</a></li>
+          <li><a href="#">ติดต่อ</a></li>
+          <li class="cart"><a href="cart.html">ตะกร้า 🛒</a></li> 
+          <li><a href="orders.html">รายการสั่งซื้อ</a></li>
+        </ul>
+    </nav>
+    <main class="orders-page-container">
+        <h1>รายการสั่งซื้อของฉัน</h1>
+        <div id="orders-list" class="orders-list-container">
+            </div>
+        <div id="no-orders-message" class="empty-message" style="display: none;">
+            <i class="fas fa-box-open fa-3x"></i>
+            <p>คุณยังไม่มีรายการสั่งซื้อ</p>
+            <a href="index.html" class="back-to-shop-btn">เลือกซื้อสินค้าต่อ</a>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>© 2025 สวนไม้สมบูรณ์ | All rights reserved</p>
+    </footer>
+    
+    <script src="index.js"></script>
+    
+</body>
+</html>

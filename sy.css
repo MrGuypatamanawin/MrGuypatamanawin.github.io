@@ -734,3 +734,33 @@ body {
     /* 3. (เสริม) ให้แสดงผลแบบบล็อก ป้องกันช่องว่างเล็กน้อย */
     display: block; 
 }
+/* ======================================================= */
+/* 6.1 MODAL (Login/Register Forms) STYLING */
+/* ======================================================= */
+
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.auth-input:focus {
+    border-color: #2E7D32;
+}
+
+.switch-mode-text {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.switch-mode-text a {
+    color: #2E7D32;
+    font-weight: 600;
+    text-decoration: none;
+}

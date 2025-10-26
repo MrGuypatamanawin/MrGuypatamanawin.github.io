@@ -1,0 +1,118 @@
+/* ======================================================= */
+/* orders.css */
+/* ======================================================= */
+.orders-page-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    min-height: 60vh;
+}
+
+.orders-page-container h1 {
+    font-size: 2rem;
+    color: #2E7D32;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.orders-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* *** [แก้ไข] เพิ่ม Padding ด้านซ้าย/ขวา เป็น 30px *** */
+.order-header {
+    background-color: #f7f7f7;
+    padding: 15px 30px; /* เพิ่ม padding ด้านซ้ายขวา */
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    border-radius: 8px 8px 0 0;
+}
+
+.order-header .status {
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.status.pending { background-color: #FFC107; } 
+.status.paid { background-color: #2E7D32; } 
+
+/* สไตล์สำหรับสถานะ "รอตรวจสอบสลิป" */
+.status.PaymentPending { 
+    background-color: #f39c12; 
+    color: white;
+}
+
+/* *** [แก้ไข] เพิ่ม Padding ด้านซ้าย/ขวา เป็น 30px *** */
+.order-details {
+    padding: 20px 30px; /* เพิ่ม padding ด้านซ้ายขวา */
+}
+
+.order-item-list p {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.order-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: right;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px dashed #eee;
+    color: #333;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+.empty-message i {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.empty-message .back-to-shop-btn {
+    background: linear-gradient(45deg, #2E7D32, #6AA84F);
+    color: #fff;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.empty-message .back-to-shop-btn:hover {
+    background: linear-gradient(45deg, #1B5E20, #4CAF50);
+    transform: translateY(-3px);
+}
